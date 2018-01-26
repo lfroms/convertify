@@ -14,6 +14,8 @@ $(document).ready(function() {
         $("#base-8").val(number.toString(8));
         $("#u-binary").val(number.toString(2));
 
+        $("#2-comp").val(twosComplement(number, $("#num-bits").val()));
+
         checkIfEmpty(this);
     })
 
@@ -23,6 +25,8 @@ $(document).ready(function() {
         $("#base-10").val(number.toString(10));
         $("#hexadecimal").val(number.toString(16));
         $("#u-binary").val(number.toString(2));
+
+        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
 
         checkIfEmpty(this);
     })
@@ -34,6 +38,8 @@ $(document).ready(function() {
         $("#base-8").val(number.toString(8));
         $("#u-binary").val(number.toString(2));
 
+        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
+
         checkIfEmpty(this);
     })
 
@@ -44,7 +50,23 @@ $(document).ready(function() {
         $("#base-8").val(number.toString(8));
         $("#hexadecimal").val(number.toString(16));
 
+        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
+
         checkIfEmpty(this);
+    })
+
+    $("#2-comp").on("input", function() {
+        let number = parseInt($("#u-binary").val(), 2);
+
+        $("#base-10").val(number.toString(10));
+        $("#base-8").val(number.toString(8));
+        $("#hexadecimal").val(number.toString(16));
+
+        checkIfEmpty(this);
+    })
+
+    $("#num-bits").on("input", function() {
+        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
     })
 
     $("#reset").click(function() {
@@ -53,8 +75,11 @@ $(document).ready(function() {
 })
 
 function resetAllFields() {
-    $(".val").each(function() {
+    $(".val").not("#2-comp").not("#1-comp").each(function() {
         this.disabled = false;
+    })
+
+    $(".val").each(function() {
         this.value = "";
     })
 
@@ -62,7 +87,7 @@ function resetAllFields() {
 }
 
 function disableFields(active) {
-    $(".val").not(active).each(function() {
+    $(".val").not(active).not("#2-comp").not("#1-comp").each(function() {
         this.disabled = true;
     })
 
@@ -80,3 +105,30 @@ $(document).keyup(function(e) {
         resetAllFields();
     }
 });
+
+
+/*
+Credit for decimal to 2's Complement:
+https://gist.github.com/bsara/519df5f91833d01c20ec
+*/
+
+function twosComplement(value, bits) {
+    let binaryAsString;
+
+    if (value >= 0) {
+        let twosComp = value.toString(2);
+        binaryAsString = padAndChop(twosComp, '0', (bits || twosComp.length));
+    } else {
+        binaryAsString = (Math.pow(2, bits) + value).toString(2);
+
+        if (Number(binaryAsString) < 0) {
+            return undefined;
+        }
+    }
+
+    return binaryAsString;
+}
+
+function padAndChop(str, padChar, length) {
+    return (Array(length).fill(padChar).join('') + str).slice(length * -1);
+}
