@@ -52,12 +52,23 @@
                         <input class="u-full-width val" type="text" placeholder="01011001" id="u-binary">
                     </div>
                     <div class="row">
-                        <label for="2-comp">2's Complement</label>
+                        <label for="2-comp">2's Complement (coming soon)</label>
                         <input class="u-full-width val" type="text" placeholder="10001010" id="2-comp">
                     </div>
                     <div class="row">
-                        <label for="1-comp">1's Complement</label>
+                        <label for="1-comp">1's Complement (coming soon)</label>
                         <input class="u-full-width val" type="text" placeholder="00101111" id="1-comp">
+                    </div>
+                    
+                    <br />
+                    
+                    <div class="row">
+                        <label for="num-bits">Number of Bits</label>
+                        <select class="u-full-width" id="num-bits">
+                            <option value="8">8</option>
+                            <option value="4">4</option>
+                            <option value="16">16</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -65,7 +76,9 @@
             <br />
 
             <div class="row">
-                <button id="reset">Reset</button>
+                <div class="one-half column offset-by-one-half">
+                    <button id="reset">Reset</button>
+                </div>
             </div>
         </div>
 
