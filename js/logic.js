@@ -8,44 +8,42 @@ $(document).ready(function() {
     })
 
     $("#base-10").on("input", function() {
-        let int = parseInt($("#base-10").val());
+        let number = parseInt($("#base-10").val());
 
-        $("#hexadecimal").val(int.toString(16));
-        $("#base-8").val(int.toString(8));
-        $("#u-binary").val(int.toString(2));
-        
+        $("#hexadecimal").val(number.toString(16));
+        $("#base-8").val(number.toString(8));
+        $("#u-binary").val(number.toString(2));
+
         checkIfEmpty(this);
     })
 
     $("#base-8").on("input", function() {
-        let int = parseInt($("#base-8").val(), 8);
+        let number = parseInt($("#base-8").val(), 8);
 
-        console.log($("#base-8").val()[$("#base-8").val().length -1]); //TOTOTOTOTOTODODDOODDOOD
+        $("#base-10").val(number.toString(10));
+        $("#hexadecimal").val(number.toString(16));
+        $("#u-binary").val(number.toString(2));
 
-        $("#base-10").val(int.toString(10));
-        $("#hexadecimal").val(int.toString(16));
-        $("#u-binary").val(int.toString(2));
-        
         checkIfEmpty(this);
     })
 
     $("#hexadecimal").on("input", function() {
-        let int = parseInt($("#hexadecimal").val(), 16);
+        let number = parseInt($("#hexadecimal").val(), 16);
 
-        $("#base-10").val(int.toString(10));
-        $("#base-8").val(int.toString(8));
-        $("#u-binary").val(int.toString(2));
-        
+        $("#base-10").val(number.toString(10));
+        $("#base-8").val(number.toString(8));
+        $("#u-binary").val(number.toString(2));
+
         checkIfEmpty(this);
     })
 
     $("#u-binary").on("input", function() {
-        let int = parseInt($("#u-binary").val(), 2);
+        let number = parseInt($("#u-binary").val(), 2);
 
-        $("#base-10").val(int.toString(10));
-        $("#base-8").val(int.toString(8));
-        $("#hexadecimal").val(int.toString(16));
-        
+        $("#base-10").val(number.toString(10));
+        $("#base-8").val(number.toString(8));
+        $("#hexadecimal").val(number.toString(16));
+
         checkIfEmpty(this);
     })
 

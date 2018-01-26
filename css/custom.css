@@ -24,4 +24,5 @@ h6.section-title {
 
 .val {
     text-transform: uppercase;
+    font-family: "Courier", monospace;
 }
