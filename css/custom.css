@@ -9,6 +9,7 @@
 
 .footer {
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 h6.section-title {
@@ -20,9 +21,15 @@ h6.section-title {
 
 .val:disabled {
     background: #f5f5f5;
+    color: #000 !important;
 }
 
 .val {
     text-transform: uppercase;
     font-family: "Courier", monospace;
+}
+
+h1 > small {
+    font-size: 40%;
+    color: #424242;
 }
