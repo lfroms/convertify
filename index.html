@@ -9,7 +9,7 @@
         <meta name="keywords" content="decimal, hex, binary, converter, unsigned binary, base convert, number base, convertify, lukas romsicki, base 10, base 16, base 8, hexadecimal, ones complement, twos complement, 1's complement, 2's complement, instant base converter, computer science, binary converter" />
 
         <meta name="robots" content="index, nofollow" />
-        
+
         <link rel="icon" type="image/png" href="favicon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="white">
@@ -33,6 +33,7 @@
             </div>
 
             <div class="row">
+                <h6 class="section-title">Base Conversion</h6>
                 <p>Click or tap on the box who's value you already know, <kbd>esc</kbd> to reset.</p>
             </div>
 
@@ -86,6 +87,44 @@
             <div class="row">
                 <div class="one-half column offset-by-one-half">
                     <button id="reset">Reset</button>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <h6 class="section-title">Basic Binary Operations</h6>
+                <p>Use this tool to add, subtract, multiply, or divide <em>unsigned </em>binary numbers.</p>
+            </div>
+            
+            <div class="row">
+                <div class="one-half column">
+                    <div class="row">
+                        <label for="bin-op-1">Operand 1</label>
+                        <input class="u-full-width op-val" type="text" placeholder="01011001" id="bin-op-1">
+                    </div>
+                    <div class="row">
+                        <label for="bin-op-2">Operand 2</label>
+                        <input class="u-full-width op-val" type="text" placeholder="10111010" id="bin-op-2">
+                    </div>
+                </div>
+
+                <div class="one-half column">
+                    <div class="row">
+                        <label for="bin-operator">Operator</label>
+                        <select class="u-full-width" id="bin-operator">
+                            <option value="add" selected>+</option>
+                            <option value="sub">–</option>
+                            <option value="mult">&times;</option>
+                            <option value="div">&divide;</option>
+                        </select>
+                    </div>
+                    
+                    <div class="row">
+                        <label for="bin-result">Result</label>
+                        <input class="u-full-width" type="text" placeholder="01101001" id="bin-result" disabled>
+                        <small><strong>Note: </strong>This tool is not currently capable of operating on 1 or 2's complement binary numbers.</small>
+                    </div>
                 </div>
             </div>
 
