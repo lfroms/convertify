@@ -1,8 +1,4 @@
 $(document).ready(function() {
-    $(".val").click(function() {
-        disableFields(this);
-    })
-
     $(".val").on("input", function() {
         disableFields(this);
     })
@@ -60,8 +56,10 @@ $(document).ready(function() {
     })
 
     $("#num-bits").on("input", function() {
-        $("#2-comp").val(getTwosComplement($("#base-10").val()));
-        $("#1-comp").val(getOnesComplement($("#base-10").val()));
+        if ($("#base-10").val()) {
+            $("#2-comp").val(getTwosComplement($("#base-10").val()));
+            $("#1-comp").val(getOnesComplement($("#base-10").val()));
+        }
     })
 
     $("#reset").click(function() {
@@ -75,10 +73,10 @@ $(document).ready(function() {
         if (isNaN(numberA) == false && isNaN(numberB) == false) {
             performOperation(numberA, numberB, $("#bin-operator").val());
         }
-        
+
         checkIfEmpty(this);
     })
-    
+
     $("#bin-op-2").on("input", function() {
         let numberA = parseInt($("#bin-op-1").val(), 2);
         let numberB = parseInt($(this).val(), 2);
@@ -86,10 +84,10 @@ $(document).ready(function() {
         if (isNaN(numberA) == false && isNaN(numberB) == false) {
             performOperation(numberA, numberB, $("#bin-operator").val());
         }
-        
+
         checkIfEmpty(this);
     })
-    
+
     $("#bin-operator").on("input", function() {
         let numberA = parseInt($("#bin-op-1").val(), 2);
         let numberB = parseInt($("#bin-op-2").val(), 2);
@@ -117,14 +115,10 @@ function resetAllFields(fieldSet) {
         this.value = "";
     })
 
-    $("#num-bits").prop("disabled", true);
-
     $("#reset").removeClass("button-primary");
 }
 
 function disableFields(active) {
-    $("#num-bits").prop("disabled", false);
-
     $("#reset").addClass("button-primary");
 }
 
