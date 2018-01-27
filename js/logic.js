@@ -87,6 +87,8 @@ function resetAllFields() {
     $(".val").each(function() {
         this.value = "";
     })
+    
+    $("#num-bits").prop("disabled", true);
 
     $("#reset").removeClass("button-primary");
 }
@@ -95,6 +97,8 @@ function disableFields(active) {
     $(".val").not(active).not("#2-comp").not("#1-comp").each(function() {
         this.disabled = true;
     })
+    
+    $("#num-bits").prop("disabled", false);
 
     $("#reset").addClass("button-primary");
 }
