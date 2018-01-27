@@ -80,10 +80,6 @@ $(document).ready(function() {
 })
 
 function resetAllFields() {
-    $(".val").not("#2-comp").not("#1-comp").each(function() {
-        this.disabled = false;
-    })
-
     $(".val").each(function() {
         this.value = "";
     })
@@ -94,10 +90,6 @@ function resetAllFields() {
 }
 
 function disableFields(active) {
-    $(".val").not(active).not("#2-comp").not("#1-comp").each(function() {
-        this.disabled = true;
-    })
-    
     $("#num-bits").prop("disabled", false);
 
     $("#reset").addClass("button-primary");
