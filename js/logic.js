@@ -63,7 +63,7 @@ $(document).ready(function() {
     })
 
     $("#reset").click(function() {
-        resetAllFields();
+        resetAllFields(".val");
     })
 
     $("#bin-op-1").on("input", function() {
