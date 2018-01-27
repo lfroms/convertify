@@ -29,6 +29,11 @@ h6.section-title {
     font-family: "Courier", monospace;
 }
 
+.op-val {
+    text-transform: uppercase;
+    font-family: "Courier", monospace;
+}
+
 h1 > small {
     font-size: 40%;
     color: #424242;
