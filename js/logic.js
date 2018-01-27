@@ -130,9 +130,9 @@ function checkIfEmpty(element) {
     }
 }
 
-$(document).keyup(function(e) {
+$(document).keydown(function(e) {
     if (e.keyCode == 27) {
-        resetAllFields();
+        resetAllFields(".val");
     }
 });
 
