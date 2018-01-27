@@ -8,13 +8,14 @@ $(document).ready(function() {
     })
 
     $("#base-10").on("input", function() {
-        let number = parseInt($("#base-10").val());
+        let number = parseInt($(this).val(), 10);
 
         $("#hexadecimal").val(number.toString(16));
         $("#base-8").val(number.toString(8));
         $("#u-binary").val(number.toString(2));
-
-        $("#2-comp").val(twosComplement(number, $("#num-bits").val()));
+        
+        $("#2-comp").val(getTwosComplement(number));
+        $("#1-comp").val(getOnesComplement(number));
 
         checkIfEmpty(this);
     })
@@ -26,7 +27,8 @@ $(document).ready(function() {
         $("#hexadecimal").val(number.toString(16));
         $("#u-binary").val(number.toString(2));
 
-        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
+        $("#2-comp").val(getTwosComplement(number));
+        $("#1-comp").val(getOnesComplement(number));
 
         checkIfEmpty(this);
     })
@@ -38,7 +40,8 @@ $(document).ready(function() {
         $("#base-8").val(number.toString(8));
         $("#u-binary").val(number.toString(2));
 
-        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
+        $("#2-comp").val(getTwosComplement(number));
+        $("#1-comp").val(getOnesComplement(number));
 
         checkIfEmpty(this);
     })
@@ -50,7 +53,8 @@ $(document).ready(function() {
         $("#base-8").val(number.toString(8));
         $("#hexadecimal").val(number.toString(16));
 
-        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
+        $("#2-comp").val(getTwosComplement(number));
+        $("#1-comp").val(getOnesComplement(number));
 
         checkIfEmpty(this);
     })
@@ -66,7 +70,8 @@ $(document).ready(function() {
     })
 
     $("#num-bits").on("input", function() {
-        $("#2-comp").val(twosComplement(parseInt($("#base-10").val()), $("#num-bits").val()));
+        $("#2-comp").val(getTwosComplement($("#base-10").val()));
+        $("#1-comp").val(getOnesComplement($("#base-10").val()));
     })
 
     $("#reset").click(function() {
@@ -106,29 +111,22 @@ $(document).keyup(function(e) {
     }
 });
 
-
-/*
-Credit for decimal to 2's Complement:
-https://gist.github.com/bsara/519df5f91833d01c20ec
-*/
-
-function twosComplement(value, bits) {
-    let binaryAsString;
-
-    if (value >= 0) {
-        let twosComp = value.toString(2);
-        binaryAsString = padAndChop(twosComp, '0', (bits || twosComp.length));
-    } else {
-        binaryAsString = (Math.pow(2, bits) + value).toString(2);
-
-        if (Number(binaryAsString) < 0) {
-            return undefined;
-        }
-    }
-
-    return binaryAsString;
+function twosComplement(value) {
+    return (~value + 1 >>> 0).toString(2);
 }
 
-function padAndChop(str, padChar, length) {
-    return (Array(length).fill(padChar).join('') + str).slice(length * -1);
+function onesComplement(value) {
+    return (~value >>> 0).toString(2);
+}
+
+function getTwosComplement(tenBaseValue) {
+    let twoComp = twosComplement(tenBaseValue);
+    
+    return twoComp.substr(twoComp.length - $("#num-bits").val());
+}
+
+function getOnesComplement(tenBaseValue) {
+    let oneComp = onesComplement(tenBaseValue);
+    
+    return oneComp.substr(oneComp.length - $("#num-bits").val());
 }
