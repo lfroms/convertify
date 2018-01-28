@@ -13,6 +13,9 @@ $(document).ready(function() {
         $("#2-comp").val(getTwosComplement(number));
         $("#1-comp").val(getOnesComplement(number));
 
+        $("#2-comp-ex").text(`(-${number.toString(10)})`);
+        $("#1-comp-ex").text(`(-${number.toString(10)})`);
+
         checkIfEmpty(this);
     })
 
@@ -25,6 +28,9 @@ $(document).ready(function() {
 
         $("#2-comp").val(getTwosComplement(number));
         $("#1-comp").val(getOnesComplement(number));
+
+        $("#2-comp-ex").text(`(-${number.toString(10)})`);
+        $("#1-comp-ex").text(`(-${number.toString(10)})`);
 
         checkIfEmpty(this);
     })
@@ -39,6 +45,9 @@ $(document).ready(function() {
         $("#2-comp").val(getTwosComplement(number));
         $("#1-comp").val(getOnesComplement(number));
 
+        $("#2-comp-ex").text(`(-${number.toString(10)})`);
+        $("#1-comp-ex").text(`(-${number.toString(10)})`);
+
         checkIfEmpty(this);
     })
 
@@ -51,6 +60,9 @@ $(document).ready(function() {
 
         $("#2-comp").val(getTwosComplement(number));
         $("#1-comp").val(getOnesComplement(number));
+
+        $("#2-comp-ex").text(`(-${number.toString(10)})`);
+        $("#1-comp-ex").text(`(-${number.toString(10)})`);
 
         checkIfEmpty(this);
     })
@@ -114,6 +126,9 @@ function resetAllFields(fieldSet) {
     $(fieldSet).each(function() {
         this.value = "";
     })
+
+    $("#2-comp-ex").text("");
+    $("#1-comp-ex").text("");
 
     $("#reset").removeClass("button-primary");
 }
